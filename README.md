@@ -5,6 +5,13 @@ The website demonstrates modern UI design, responsive layout techniques, and cle
 
 ---
 
+##  Live Demo
+
+Live Demo :  https://gushwork-assignment-lilac.vercel.app/  
+
+---
+
+ 
 ## 🚀 Project Overview
 
 The objective of this project was to build a **clean, responsive, and interactive landing page** based on the provided design reference.
