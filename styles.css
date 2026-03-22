@@ -1344,6 +1344,18 @@ body{
   align-items:center;
 }
 
+.cta-text{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+
+.highlight-text{
+  color:#283990;   
+  font-weight:600;
+}
+
 .portfolio-cta h4{
   font-size:18px;
   font-weight:600;
@@ -1359,7 +1371,7 @@ body{
   height:44px;
   padding:0 20px;
 
-  border-radius:8px;
+  border-radius:25px;
   border:none;
 
   background:#283990;
@@ -1369,7 +1381,19 @@ body{
   font-weight:500;
 
   cursor:pointer;
+
+  display:flex;             
+  align-items:center;       
+  gap:8px;                   /
 }
+
+/* Icon size fix */
+.cta-icon{
+  width:18px;
+  height:18px;
+  border-radius: 25px;
+}
+
 
 
 /* ================= SECTION TITLE ================= */
@@ -2107,6 +2131,17 @@ body{
   border-top:1px solid #E5E7EB;
   background:#F9FAFB;
 }
+.modal-footer button{
+  padding:10px 20px;
+  border-radius:8px;
+  border:none;
+  font-size:14px;
+  font-weight:500;
+  cursor:pointer;
+}
+.modal-footer:hover button{
+  background:#01010e;
+} 
 
 
 /* BUTTONS */
@@ -2443,3 +2478,4 @@ font-size:26px;
 }
 
 }
+

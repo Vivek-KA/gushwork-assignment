@@ -154,6 +154,51 @@ function closeDatasheetModal(){
   document.getElementById("datasheetModal").style.display="none";
 }
 
+// Modal validation logic
+
+document.addEventListener("DOMContentLoaded", function() {
+  const modal = document.getElementById("datasheetModal");
+  if (!modal) return;
+
+  const emailInput = modal.querySelector('input[type="email"]');
+  const phoneInput = modal.querySelectorAll('input[type="text"]')[0];
+  const downloadBtn = modal.querySelector('.download-btn');
+
+  function validateEmail(email) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
+  }
+  function validatePhone(phone) {
+    return (
+      phone.trim() === "" ||
+      /^(\+91[-\s]?)?[0]?[6789]\d{9}$/.test(phone.trim())
+    );
+  }
+  function updateButtonState() {
+    const emailValid = validateEmail(emailInput.value);
+    const phoneValid = validatePhone(phoneInput.value);
+    downloadBtn.disabled = !(emailValid && phoneValid);
+  }
+  emailInput.addEventListener("input", updateButtonState);
+  phoneInput.addEventListener("input", updateButtonState);
+  phoneInput.addEventListener("blur", function() {
+    if (phoneInput.value && !validatePhone(phoneInput.value)) {
+      phoneInput.style.borderColor = "red";
+    } else {
+      phoneInput.style.borderColor = "";
+    }
+  });
+  downloadBtn.addEventListener("click", function(e) {
+    if (downloadBtn.disabled) {
+      e.preventDefault();
+      return;
+    }
+    alert("Brochure will be sent to: " + emailInput.value);
+    window.closeDatasheetModal();
+    emailInput.value = "";
+    phoneInput.value = "";
+    updateButtonState();
+  });
+});
 
 /* =========================================================
    REQUEST QUOTE MODAL
@@ -176,3 +221,12 @@ window.addEventListener("click", function(e){
     modal.style.display = "none";
   }
 });
+
+// Make sure openDatasheetModal and closeDatasheetModal are global
+window.openDatasheetModal = function() {
+  document.getElementById("datasheetModal").style.display = "flex";
+};
+window.closeDatasheetModal = function() {
+  document.getElementById("datasheetModal").style.display = "none";
+};
+
